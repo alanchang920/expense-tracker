@@ -1,0 +1,37 @@
+[
+  {
+    "category": "homeExpense",
+    "categoryName": "家居物業",
+    "url": "/homeExpense",
+    "icon": "<i class='fas fa-home'></i>",
+    "tempCategory": ""
+  },
+  {
+    "category": "transport",
+    "categoryName": "交通出行",
+    "url": "/transport",
+    "icon": "<i class='fas fa-shuttle-van'></i>",
+    "tempCategory": ""
+  },
+  {
+    "category": "entertainment",
+    "categoryName": "休閒娛樂",
+    "url": "/entertainment",
+    "icon": "<i class='fas fa-grin-beam'></i>",
+    "tempCategory": ""
+  },
+  {
+    "category": "food",
+    "categoryName": "餐飲食品",
+    "url": "/food",
+    "icon": "<i class='fas fa-utensils'></i>",
+    "tempCategory": ""
+  },
+  {
+    "category": "other",
+    "categoryName": "其他",
+    "url": "/other",
+    "icon": "<i class='fas fa-pen'></i>",
+    "tempCategory": ""
+  }
+]
