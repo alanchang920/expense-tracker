@@ -55,7 +55,7 @@
             </h4>
           </div>
           <div class="col-3 d-flex align-items-center justify-content-end">
-            <a class="btn btn-success mr-2" href="/records/{{ this._id }}/edit">
+            <a class="btn btn-success mr-2" href="./records/{{ this._id }}">
               修改
             </a>
             <form action="/records/{{ this._id }}?_method=DELETE" method="POST" onsubmit="return deleteAlert()"
