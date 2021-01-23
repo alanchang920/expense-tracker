@@ -4,7 +4,12 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const handlebars = require('handlebars')
 const methodOverride = require('method-override')
+
 const routes = require('./routes/index')
+
+const usePassport = require('./config/passport')
+require('./config/mongoose')
+
 const app = express()
 const port = process.env.PORT || 3000
 
@@ -19,9 +24,10 @@ app.use(session({
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
-app.use(routes)
 
-require('./config/mongoose')
+usePassport(app)
+
+app.use(routes)
 
 handlebars.registerHelper('if_equal', function (job, expectedJob, options) {
   if (job === expectedJob) {
