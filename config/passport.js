@@ -1,19 +1,20 @@
 const passport = require('passport')
-const user = require('../models/user')
-const LocalStategy = require('passport-local').Strategy
+const LocalStrategy = require('passport-local').Strategy
+const User = require('../models/user')
 
 module.exports = app => {
+
   app.use(passport.initialize())
   app.use(passport.session())
 
-  passport.use(new LocalStategy({ usernameField: 'email ' }, (email, password, done) => {
+  passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
     User.findOne({ email })
       .then(user => {
         if (!user) {
           return done(null, false, { message: 'That email is not registered!' })
         }
-        if (user.passport != password) {
-          return done(null, false, { message: 'Email or password incorrect.' })
+        if (user.password !== password) {
+          return done(null, false, { message: 'Email or Password incorrect.' })
         }
         return done(null, user)
       })
@@ -29,4 +30,5 @@ module.exports = app => {
       .then(user => done(null, user))
       .catch(err => done(err, null))
   })
+
 }
