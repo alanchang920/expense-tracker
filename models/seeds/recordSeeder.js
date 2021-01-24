@@ -8,8 +8,8 @@ const db = require('../../config/mongoose')
 const bcrypt = require('bcryptjs')
 
 const SEED_USER = {
-  name: 'user1',
-  email: 'user1@example.com',
+  name: 'alan',
+  email: 'alan@example.com',
   password: '123'
 }
 
@@ -40,37 +40,37 @@ db.once('open', () => {
           const userId = user._id
           return Record.create(
             {
-              name: '早餐',
+              name: '午餐',
               category: '餐飲食品',
-              date: '2020-06-11',
-              amount: 120,
-              merchant: '全家便利商店',
+              date: '202-01-18',
+              amount: 60,
+              merchant: '美食街',
               icon: '<i class="fas fa-utensils"></i>',
               userId
             },
             {
-              name: '午餐',
+              name: '晚餐',
               category: '餐飲食品',
-              date: '2020-06-10',
-              amount: 300,
-              merchant: '麥當勞',
+              date: '2020-01-19',
+              amount: '800',
+              merchant: '馬辣',
               icon: '<i class="fas fa-utensils"></i>',
               userId
             },
             {
               name: '電影',
               category: '休閒娛樂',
-              date: '2020-05-28',
-              amount: 250,
-              merchant: '威尼斯影城',
+              date: '2020-02-28',
+              amount: 300,
+              merchant: '威秀',
               icon: '<i class="fas fa-grin-beam"></i>',
               userId
             },
             {
               name: '加油',
               category: '交通出行',
-              date: '2020-05-10',
-              amount: 1200,
+              date: '2020-03-19',
+              amount: '1600',
               merchant: '中油',
               icon: '<i class="fas fa-shuttle-van"></i>',
               userId
@@ -78,8 +78,8 @@ db.once('open', () => {
             {
               name: '房租',
               category: '家居物業',
-              date: '2020-04-25',
-              amount: 12000,
+              date: '2020-04-23',
+              amount: 16000,
               merchant: '其他',
               icon: '<i class="fas fa-home"></i>',
               userId
