@@ -35,11 +35,11 @@ app.use((req, res, next) => {
 
 app.use(routes)
 
-handlebars.registerHelper('if_equal', function (job, expectedJob, options) {
-  if (job === expectedJob) {
-    return options.fn(this);
+handlebars.registerHelper('ifEqual', function (category, targetCategory, options) {
+  if (category === targetCategory) {
+    return options.fn(this)
   }
-  return options.inverse(this);
+  return options.inverse(this)
 })
 
 app.listen(port, () => {

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+
 const recordSchema = new Schema({
   name: {
     type: String,
@@ -17,8 +18,13 @@ const recordSchema = new Schema({
     type: Number,
     required: true
   },
-  showDate: {
+  icon: {
     type: String,
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    index: true,
     required: true
   }
 })

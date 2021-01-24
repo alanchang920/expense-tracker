@@ -1,25 +1,31 @@
 const db = require('../../config/mongoose')
 const Category = require('../category')
-const categoryList = require('../../category.json')
 
 db.once('open', () => {
-  console.log('MongoDB connected category!')
+  console.log('db connected! start seeding...')
 
-  const promise = []
-  for (let i = 0; i < categoryList.length; i++) {
-    promise.push(
-      Category.create({
-        category: categoryList[i].category,
-        categoryName: categoryList[i].categoryName,
-        url: categoryList[i].url,
-        icon: categoryList[i].icon,
-        tempCategory: categoryList[i].tempCategory
-      })
-    )
-  }
-  Promise.all(promise).then(() => {
-    db.close()
-  })
+  Category.create(
+    {
+      category: 'living',
+      icon: 'fas fa-home'
+    },
+    {
+      category: 'traffic',
+      icon: 'fas fa-shuttle-van'
+    },
+    {
+      category: 'entertainment',
+      icon: 'fas fa-grin-beam'
+    },
+    {
+      category: 'food',
+      icon: 'fas fa-utensils'
+    },
+    {
+      category: 'others',
+      icon: 'fas fa-pen'
+    }
+  )
 
-  console.log('Category Data Insert Done')
+    .then(() => db.close())
 })

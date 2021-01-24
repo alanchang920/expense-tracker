@@ -2,39 +2,37 @@
   <h5 class="mb-4 mt-5" style="color: lightcoral;">* 必填欄位</h5>
   <form action="/records" method="POST">
     <div class="form-group row mb-4">
-      <label for="example-text-input" class="col-2 col-form-label">名稱*</label>
+      <label for="name" class="col-2 col-form-label">名稱*</label>
       <div class="col-10">
-        <input class="form-control" type="text" placeholder="" id="example-text-input" name="name" required>
+        <input class="form-control" type="text" name="name" id="name" required>
       </div>
     </div>
     <div class="form-group row mb-4">
-      <label for="exampleSelect1" class="col-2 col-form-label">類別*</label>
+      <label for="category" class="col-2 col-form-label">類別*</label>
       <div class="col-10">
         <select id="category" class="form-control" name="category" required>
-          <option value="">選擇類別</option>
-          {{#each categoryies}}
-          <option value="{{this.category}}">
-            {{this.categoryName}}
-          </option>
-          {{/each}}
+          <option disabled selected>選擇類別..</option>
+          <option value="living">家居物業</option>
+          <option value="traffic">交通出行</option>
+          <option value="entertainment">休閒娛樂</option>
+          <option value="food">餐飲食品</option>
+          <option value="others">其他</option>
         </select>
       </div>
     </div>
     <div class="form-group input-group row mb-4">
-      <label for="example-date-input" class="col-2 col-form-label mr-4">日期*</label>
+      <label for="date" class="col-2 col-form-label mr-4">日期*</label>
       <div class="input-group-prepend">
         <span class="input-group-text" style="width: 45px;"><i class=" far fa-calendar-alt fa-lg"></i></span>
       </div>
-      <input class="form-control col-5" type="date" id="example-date-input" style="cursor: pointer" name='date'
-        required>
+      <input class="form-control col-5" type="date" id="date" style="cursor: pointer" name="date" required>
     </div>
     <div class="form-group input-group row mb-4">
-      <label for="example-number-input" class="col-2 col-form-label mr-4">金額*</label>
+      <label for="amount" class="col-2 col-form-label mr-4">金額*</label>
       <div class="input-group-prepend">
         <span class="input-group-text" style="width: 45px"><i class="fas fa-dollar-sign fa-lg ml-1"></i></span>
       </div>
-      <input class=" form-control col-5" type="number" placeholder="100" id="example-number-input" name="amount"
-        required>
+      <input class=" form-control col-5" type="number" id="amount" name="amount" required>
     </div>
 
     <div class="text-center mt-4 row">
