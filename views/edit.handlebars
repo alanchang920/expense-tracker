@@ -1,35 +1,70 @@
-<div class="container my-5">
-  <form class="row justify-content-center" action="/records/{{record._id}}?_method=PUT" method="POST">
-    {{!-- name --}}
-    <div class="form-row col-12 justify-content-center mb-5">
-      <label class="align-center col-2 text-center" for="name">名稱:</label>
-      <input class="form-control col-4" name="name" id="name" value="{{record.name}}" required>
+<div class="container-md py-5">
+
+  <div class="row">
+    <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-edit mr-1"></i>編輯支出 </h5>
+          <hr>
+          <form method="POST" action="/records/{{record._id}}?_method=PUT" class="was-validated">
+            <div class="form-group form-row">
+              <label for="record-name" class="col-md-2 col-form-label">
+                支出明細
+              </label>
+              <div class="col-md-10">
+                <input type="text" name="name" class="form-control is-invalid" id="record-name" placeholder="火雞肉飯"
+                  value="{{record.name}}" required>
+              </div>
+            </div>
+
+            <div class="form-group form-row">
+              <label for="record-date" class="col-md-2 col-form-label">
+                消費日期
+              </label>
+              <div class="col-md-10">
+                <input type="date" name="date" class="form-control is-invalid" id="record-date" value="{{record.date}}"
+                  required>
+              </div>
+            </div>
+
+            <div class="form-group form-row">
+              <label for="record-category" class="col-md-2 col-form-label">
+                類別
+              </label>
+              <div class="col-md-10">
+                <select name="category" id="record-category" class="custom-select" required>
+                  <option value="{{record.category}}">{{record.category}}</option>
+                  {{#each categories}}
+                  <option value="{{this.title}}">{{this.title}}</option>
+                  {{/each}}
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group form-row">
+              <label for="record-amount" class="col-md-2 col-form-label">
+                金額
+              </label>
+              <div class="col-md-10">
+                <input type="number" name="amount" class="form-control is-invalid" id="record-amount" placeholder="100"
+                  min="1" value="{{record.amount}}" required>
+              </div>
+            </div>
+
+            <div class="form-group form-row">
+              <label for="record-merchant" class="col-md-2 col-form-label">
+                店家
+              </label>
+              <div class="col-md-10">
+                <input type="text" name="merchant" class="form-control is-invalid" id="record-merchant"
+                  value="{{record.merchant}}" required>
+              </div>
+            </div>
+
+            <button class="btn btn-success" type="submit">儲存變更</button>
+          </form>
+        </div>
+      </div>
     </div>
-    {{!-- date --}}
-    <div class="form-row col-12 justify-content-center mb-5">
-      <label class="align-center col-2 text-center" for="date">日期:</label>
-      <input type="date" class="form-control col-4" name="date" id="date" value="{{record.date}}" required>
-    </div>
-    {{!-- category --}}
-    <div class="form-row col-12 justify-content-center mb-5">
-      <label class="align-center col-2 text-center" for="category">類別:</label>
-      <select class="custom-select col-4" name="category" id="category" required>
-        <option value="living" {{#ifEqual record.category 'living'}}selected{{/ifEqual}}>家居物業</option>
-        <option value="traffic" {{#ifEqual record.category 'traffic'}}selected{{/ifEqual}}>交通出行</option>
-        <option value="entertainment" {{#ifEqual record.category 'entertainment'}}selected{{/ifEqual}}>休閒娛樂</option>
-        <option value="food" {{#ifEqual record.category 'food'}}selected{{/ifEqual}}>餐飲食品</option>
-        <option value="others" {{#ifEqual record.category 'others'}}selected{{/ifEqual}}>其他</option>
-      </select>
-    </div>
-    {{!-- amount --}}
-    <div class="form-row col-12 justify-content-center mb-5">
-      <label class="align-center col-2 text-center" for="amount">金額:</label>
-      <input type="number" step="1" min="0" class="form-control col-4" name="amount" id="amount"
-        value="{{record.amount}}" required>
-    </div>
-    <div class="row col-12 justify-content-center mb-5">
-      <div class="col-2"></div>
-      <button type="submit" class="btn btn-outline-info col-4 d-block">儲存</button>
-    </div>
-  </form>
+  </div>
 </div>

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+// add new Schema
 const recordSchema = new Schema({
   name: {
     type: String,
@@ -16,10 +17,15 @@ const recordSchema = new Schema({
   },
   amount: {
     type: Number,
+    min: [1, '至少輸入 1 元'],
     required: true
   },
   icon: {
     type: String,
+  },
+  merchant: {
+    type: String,
+    required: true
   },
   userId: {
     type: Schema.Types.ObjectId,
@@ -29,4 +35,5 @@ const recordSchema = new Schema({
   }
 })
 
+// Export module
 module.exports = mongoose.model('Record', recordSchema)

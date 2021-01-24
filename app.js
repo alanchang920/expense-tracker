@@ -3,8 +3,14 @@ const session = require('express-session')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const handlebars = require('handlebars')
+const hbshelpers = require('handlebars-helpers')
+const comparison = hbshelpers.comparison()
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 const routes = require('./routes/index')
 
@@ -12,9 +18,9 @@ const usePassport = require('./config/passport')
 require('./config/mongoose')
 
 const app = express()
-const port = process.env.PORT || 3000
+const PORT = process.env.PORT
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.engine('handlebars', exphbs({ helpers: comparison, defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 app.use(session({
@@ -40,13 +46,6 @@ app.use((req, res, next) => {
 
 app.use(routes)
 
-handlebars.registerHelper('ifEqual', function (category, targetCategory, options) {
-  if (category === targetCategory) {
-    return options.fn(this)
-  }
-  return options.inverse(this)
-})
-
-app.listen(port, () => {
-  console.log(`Express in listening on http://localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`Express in listening on http://localhost:${PORT}`)
 })

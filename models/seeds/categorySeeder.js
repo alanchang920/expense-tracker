@@ -1,31 +1,36 @@
-const db = require('../../config/mongoose')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 const Category = require('../category')
+const db = require('../../config/mongoose')
 
 db.once('open', () => {
-  console.log('db connected! start seeding...')
-
-  Category.create(
+  const promises = []
+  promises.push(Category.create(
     {
-      category: 'living',
-      icon: 'fas fa-home'
+      title: "家居物業",
+      icon: '<i class="fas fa-home"></i>'
     },
     {
-      category: 'traffic',
-      icon: 'fas fa-shuttle-van'
+      title: "交通出行",
+      icon: '<i class="fas fa-shuttle-van"></i>'
     },
     {
-      category: 'entertainment',
-      icon: 'fas fa-grin-beam'
+      title: "休閒娛樂",
+      icon: '<i class="fas fa-grin-beam"></i>'
     },
     {
-      category: 'food',
-      icon: 'fas fa-utensils'
+      title: "餐飲食品",
+      icon: '<i class="fas fa-utensils"></i>'
     },
     {
-      category: 'others',
-      icon: 'fas fa-pen'
+      title: "其他",
+      icon: '<i class="fas fa-hand-holding-usd"></i>'
     }
-  )
-
-    .then(() => db.close())
+  ))
+  Promise.all(promises).then(() => {
+    console.log('Category seed done!')
+    db.close()
+  })
 })
