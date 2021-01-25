@@ -1,6 +1,7 @@
 # 老爸的私房錢
 
-![](https://raw.githubusercontent.com/alanchang920/expense-tracker/main/expense-tracker.png)
+![](https://github.com/alanchang920/expense-tracker/blob/main/expense-tracker%20picture1.png)
+![](https://github.com/alanchang920/expense-tracker/blob/main/expense-tracker%20picture2.png)
 
 ## 產品功能
 - 在首頁一次瀏覽所有支出的清單
